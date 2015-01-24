@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>My Sample Page</title>
+	<!--step 1-->
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+</head>
+<body>
+	
+	<div id="dvtopNav" >
+		<ul class="textStyle">
+			<li>Home</li>
+			<li>Contents
+				<ul>
+					<li>Chapter 1
+						<ul>
+							<li>Ch1 Section 1</li>
+							<li>Ch1 Section 2</li>
+							<li>Ch1 Section 3</li>
+							<li>Ch1 Section 4</li>
+						</ul>
+					</li>
+					<li>Chapter 2
+						<ul>
+							<li>Ch2 Section 1</li>
+							<li>Ch2 Section 2</li>
+							<li>Ch2 Section 3</li>
+						</ul>
+					</li>
+					<li>Chapter 3</li>
+					<li>Chapter 4</li>
+						<ul>
+							<li>Ch4 Section 1</li>
+							<li>Ch4 Section 2
+								<ul>
+									<li>Ch4 Sec 2 Para 1</li>
+									<li>Ch4 Sec 2 Para 2</li>
+								</ul>
+							</li>
+							<li>Ch4 Section 3</li>
+						</ul>
+					<li>Chapter 5</li>										
+				</ul>
+			</li>
+			<li>About</li>
+		</ul>
+	</div>
+	<div id="hypLinks">
+		<a href="#" id="hypAdd">Add</a>
+		<a href="#" id="hypChildren">children</a>
+		<a href="#" id="hypClosest">closest</a>
+		<a href="#" id="hypEach">each</a>
+		<a href="#" id="hypEq">eq</a>
+		<a href="#" id="hypFind">find</a>
+		<a href="#" id="hypFirst">first</a>
+		<a href="#" id="hypLast">last</a>
+		<a href="#" id="hypIs">is</a>
+		<a href="#" id="hypHas">has</a>
+
+	</div>
+	<form>
+	</form>
+	<style type="text/css">
+		@font-face {
+			    font-family: "myFont";
+			    src: url(fonts/SansationLight.woff);
+			    font-weight: bold;
+			}
+			.textStyle
+			{
+				
+				font-family:  "myFont";
+				color: #3300CC ;
+			}
+	</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		$("hypAdd").click(function(){
+			var item = $("ul.textStyle li:eq('Chapter 3')").last();
+
+		});
+		
+	});
+	</script>
+</body>
