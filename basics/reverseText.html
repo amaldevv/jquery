@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+	<title>jQuery plugin: reverseText demonstration</title>
+</head>
+<body>
+
+	<h1>jQuery plugin: reverseText</h1>
+	<p>This jQuery plugin reverses all the text in the selected nodes.</p>
+
+	<ul>
+		<li>This text will be reversed</li>
+		<li>This text will not be reversed</li>
+		<li>reversed</li>
+		<li>not reversed</li>
+	</ul>
+
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="plugin.js"></script>
+	<script type="text/javascript">
+// reverse even-numbered LI tag text
+$("ul li:even").reverseText();
+</script>
+
+</body>
+</html>
