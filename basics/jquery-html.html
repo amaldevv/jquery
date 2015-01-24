@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>jQuery HTML</title>
+		<!--step 1-->
+		<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	</head>
+	<body>
+		<div id="dvtopNav">
+			<ul id="topnav">
+				<li>Home</li>
+				<li>Contents
+					<ul>
+						<li>Chapter 1</li>
+						<li>Chapter 2</li>
+						<li>Chapter 3</li>
+					</ul>
+				</li>
+				<li>About</li>
+			</ul>
+		</div>
+
+		<form>
+			<div id="content1">
+			</div>
+			<div id="content2">
+				<span >Content2<span><br>
+				<input type='text' id='txtbx' value ='sample text' />
+			</div>
+			<div id="content3">
+			</div>
+			<div id="content4">
+			</div>
+			<div id="content5">
+			</div>
+			<div id="content6">
+			</div>
+			<div id="content7">
+			</div>
+			<div id="dvLinks">
+				<a href="#" id="hypAddClass">addClass</a>
+				<a href="#" id="hypRemoveClass">removeClass</a>
+				<a href="#" id="hypAppend">append</a>
+				<a href="#" id="hypPrepend">prepend</a>
+				<a href="#" id="hypAttr">attr</a>
+				<a href="#" id="hypRemoveAttr">removeAttr</a>
+				<a href="#" id="hypVal">val</a>
+				<a href="#" id="hypCss">css</a>
+				
+				<a href="#" id="hypHtml">html</a>
+				
+				
+				
+				
+			</div>
+			<div>
+				<span id="spnResult">
+				</span>
+			</div>
+		</form>
+		<style>
+			@font-face {
+			    font-family: myFont;
+			    src: url(fonts/SansationLight.woff);
+			    font-weight: bold;
+			}
+			.textStyle 
+			{
+				font-family: myFont;
+				color: green;
+			}
+			.labelStyle
+			{
+				font-family: myFont;
+				font-style: italic;
+				text-decoration: underline;
+				color:red;
+			}
+		</style>
+
+		<script type="text/javascript">
+
+		$(document).ready(function(){
+			$("#content2").hide();
+			$("#hypAddClass").click(function(){
+				$("ul#topnav").addClass("textStyle");
+			});
+			$("#hypRemoveClass").click(function(){
+				$("ul#topnav").removeClass("textStyle").addClass("labelStyle");;
+			});
+			$("#hypAppend").click(function(){
+				$("#content1").append("Text Appended ");
+			});
+			$("#hypPrepend").click(function(){
+				$("#content1").prepend("Text prepended ");
+				$("#content1").prepend("<span><h1>Going to prepend </h1></span>");
+			});
+			$("#hypAttr").click(function(){
+				$("#content2").show();
+				$("div#content2 input").attr("disabled","disabled");
+			});
+			$("#hypCss").click(function(){
+				$("div#content1").css("background-color","lightgray");
+			});
+			
+			$("#hypHtml").click(function(){
+				$("ul#topNav li").last().html("Want to know more about Us")
+			});
+			
+			$("#hypRemoveAttr").click(function(){
+				$("#content2").show();
+				$("div#content2 input").removeAttr("disabled");
+			});
+			
+			$("#hypVal").click(function(){
+				$("#content2").show();
+				$("div#content2 input").val("modified text");
+			});
+
+		});
+
+		</script>
+	</body>
+</html>
