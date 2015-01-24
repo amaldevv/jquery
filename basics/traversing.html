@@ -4,7 +4,7 @@
 	<!--step 1-->
 	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
 </head>
-<body>
+<body >
 	
 	<div id="dvtopNav" >
 		<ul class="textStyle">
@@ -44,24 +44,30 @@
 			<li>About</li>
 		</ul>
 	</div>
-	<div id="dvLevel" style="border : 3px solid gray;padding: 5px;margin: 15px;">div -> Level 1
-		<div style="border : 3px solid limegreen;padding: 5px;margin: 15px;">div -> Level 2
-			<div style="border : 3px solid firebrick;padding: 5px;margin: 15px;">div -> Level 3
-				<ul style="border : 3px solid darkcyan;padding: 5px;margin: 15px;">ul -> Level 4
-					<li style="border : 3px solid indigo;padding: 5px;margin: 15px;">li -> Level 5
-						<div style="border : 3px solid TOMATO;padding: 5px;margin: 15px; width:200px"> 
-							Div -> Level 6				
-						</div>
-					</li>
-				</ul>
+	<div class="textStyle">
+		<div id="dvLevel"  style="border : 3px solid gray;padding: 5px;margin: 15px;">div -> Level 1
+			<div id="l2"style="border : 3px solid limegreen;padding: 5px;margin: 15px;">div -> Level 2
+				<div id="l3" style="border : 3px solid firebrick;padding: 5px;margin: 15px;">div -> Level 3
+					<ul style="border : 3px solid darkcyan;padding: 5px;margin: 15px;">ul -> Level 4
+						<li style="border : 3px solid indigo;padding: 5px;margin: 15px;">li -> Level 5
+							<div style="border : 3px solid TOMATO;padding: 5px;margin: 15px; width:200px"> 
+								Div -> Level 6				
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
+	</div>
+	<div id="dvHas">
+		<p><span>This is a span element inside a p element.</span></p>
+		<p>This is a p element with no span element.</p>
 	</div>
 	<div id="hypLinks">
 		<a href="#" id="hypAdd">add</a>
 		<a href="#" id="hypChildren">children</a>
 		<a href="#" id="hypClosest">closest</a>
-		<a href="#" id="hypEach">each</a>
+		
 		<a href="#" id="hypEq">eq</a>
 		<a href="#" id="hypFind">find</a>
 		<a href="#" id="hypFirst">first</a>
@@ -78,7 +84,7 @@
 			    src: url(fonts/SansationLight.woff);
 			    font-weight: bold;
 			}
-			.textStyle
+			.textStyle *
 			{
 				
 				font-family:  "myFont";
@@ -105,9 +111,48 @@
 		$("#hypClosest").click(function(){
 			$("#dvLevel").show();
 			$("#dvtopNav").hide();
-			$("ul > li > ul").children().css({"color":"red","border":"2px solid red"});
+			$("div").closest("ul").css("color","red");
+		});	
+		$("#hypEq").click(function(){
+			$("#dvLevel").hide();
+			$("#dvtopNav").show();
+			$("ul.textStyle > li > ul > li").eq(2).css("color","red");
+		});	
+
+		$("#hypFind").click(function(){
+			$("#dvLevel").hide();
+			$("#dvtopNav").show();
+			var item = $("#hypEq");
+			$("div").find(item).css("background-color","limegreen");
 		});		
-		
+
+		$("#hypFirst").click(function(){
+			$("#dvLevel").hide();
+			$("#dvtopNav").show();
+			 
+			$("div a").first().css("background-color","yellow");
+		});	
+		$("#hypLast").click(function(){
+			$("#dvLevel").hide();
+			$("#dvtopNav").show();
+			 
+			$("div a").last().css("background-color","red");
+		});	
+		$("#hypIs").click(function(){
+			$("#dvLevel").show();
+			$("#dvtopNav").hide();
+			 
+			$("div").click(function(e){
+				var item = $(e.target);
+				if(item.is("li"))
+				{
+					item.css("background-color","gray");
+				}
+			});
+		});	
+		$("#hypHas").click(function(){
+			  $("p:has(span)").css("border","solid red");
+		});
 	});
 	</script>
 </body>
