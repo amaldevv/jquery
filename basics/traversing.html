@@ -44,8 +44,21 @@
 			<li>About</li>
 		</ul>
 	</div>
+	<div id="dvLevel" style="border : 3px solid gray;padding: 5px;margin: 15px;">div -> Level 1
+		<div style="border : 3px solid limegreen;padding: 5px;margin: 15px;">div -> Level 2
+			<div style="border : 3px solid firebrick;padding: 5px;margin: 15px;">div -> Level 3
+				<ul style="border : 3px solid darkcyan;padding: 5px;margin: 15px;">ul -> Level 4
+					<li style="border : 3px solid indigo;padding: 5px;margin: 15px;">li -> Level 5
+						<div style="border : 3px solid TOMATO;padding: 5px;margin: 15px; width:200px"> 
+							Div -> Level 6				
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div id="hypLinks">
-		<a href="#" id="hypAdd">Add</a>
+		<a href="#" id="hypAdd">add</a>
 		<a href="#" id="hypChildren">children</a>
 		<a href="#" id="hypClosest">closest</a>
 		<a href="#" id="hypEach">each</a>
@@ -74,11 +87,26 @@
 	</style>
 	<script type="text/javascript">
 	$(document).ready(function(){
-
-		$("hypAdd").click(function(){
-			var item = $("ul.textStyle li:eq('Chapter 3')").last();
+		$("#dvtopNav").show();
+		$("#dvLevel").hide();
+		
+		$("#hypAdd").click(function(){
+			//var item = $("ul.textStyle li:contains('Chapter 3')").last();
+			/*$("li").add("Chapter 6").appendto($("ul.textStyle > li > ul " ).last());*/
 
 		});
+
+		$("#hypChildren").click(function(){
+			$("#dvLevel").hide();
+			$("#dvtopNav").show();
+			$("ul > li > ul").children().css({"color":"red","border":"2px solid red"});
+		});
+
+		$("#hypClosest").click(function(){
+			$("#dvLevel").show();
+			$("#dvtopNav").hide();
+			$("ul > li > ul").children().css({"color":"red","border":"2px solid red"});
+		});		
 		
 	});
 	</script>
