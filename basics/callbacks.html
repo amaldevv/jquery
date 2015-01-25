@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>jQuery Callbacks</title>
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+</head>
+<body>
+
+	<input id="btnSubmit" type="submit" value ="With anonymous fn" />
+	<input id="btnSubmitWo" type="button" value ="with named fn" />
+	<div>
+		<span id="spResult"></span>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#btnSubmit").click(function(){
+		$("#spResult").append("You clicked on Submit button<br>");
+	});
+
+	$("#btnSubmitWo").click(function (){
+		$("#btnSubmitWo").val("inside");
+		window.setTimeout(
+			function() 
+			{
+    		    btClick(function(){
+    				$("#spResult").append("Inside callback<br>");
+    				$("#spResult").append("Caption -> " + $("#btnSubmit").val()+ "<br>");
+    			});
+    		}, 1000);
+		$("#spResult").append("loadingggg<br>");
+	});
+});
+
+function btClick(callback)
+{
+	$("#spResult").append("Inside click<br>");
+	if(callback)
+		callback();
+}
+
+</script>
+</html>
