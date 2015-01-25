@@ -1,0 +1,119 @@
+<html>
+<head>
+	<title>My Sample Page</title>
+<!--step 1-->
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+</head>
+<body>
+	<div id="dvtopNav">
+		<ul class="topnav">
+			<li>Home</li>
+			<li>Contents
+				<ul>
+					<li>Chapter 1</li>
+					<li>Chapter 2</li>
+					<li>Chapter 3</li>
+				</ul>
+			</li>
+			<li>About</li>
+		</ul>
+	</div>
+	<form>
+	<div id="dvContent">
+		
+		<div>
+			<span class="label">First Name</span>
+		</div>
+		<div>
+			<input id="txtFirstName" name="namebox" type="text" />
+		</div>
+		<div>
+			<span>Last Name</span>
+		</div>
+		<div>
+			<input id="txtLastName" name="namebox" type="text" />
+		</div>
+		<div>
+			<span>&nbsp;</span>
+		</div>
+		<div>
+			<input id="btnSubmit" type="submit" />
+		</div>
+	</div>
+	<div id="dvCommands">
+		<a id="hypAll" href="#">All</a>
+		<a id="hypId" href="#">Id</a>
+		<a id="hypName" href="#">Name</a>
+		<a id="hypClass" href="#">Class</a>
+		<a id="hypContains" href="#">Contains</a>
+		<a id="hypStartsWith" href="#">Starts With</a>
+		<a id="hypEndsWith" href="#">Ends With</a>
+		
+		<a id="hypNotEqual" href="#">Not Equal</a>
+		
+		<a id="hypChild" href="#">Child</a>
+		
+		
+		<a id="hypDescedant" href="#">Descedant</a>
+		   
+	</div>
+	</form>
+</body>
+<style>
+	.label
+	{
+		font-style: italic;
+		font-family: sans-serif;
+		
+	}
+	.topnav{
+		border : 3px double red;
+
+	}
+</style>
+<!--step 2-->
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$("#hypAll").click(function(){		
+			$("*").css("color","red");
+			});
+		
+		
+
+		$("#hypId").click(function(){		
+			$("#btnSubmit").css("background-color","black");
+			$("#btnSubmit").css("color","white");
+			});
+
+		$("#hypName").click(function(){		
+			$("[name=namebox]").attr("placeholder","enter name");
+			});
+		$("#hypContains").click(function(){		
+			$("[class~=label]").css("color","blue");
+			});
+
+		$("#hypClass").click(function(){		
+			$(".label").css("background-color","gray");
+			});
+		$("#hypStartsWith").click(function(){		
+			$("[id^=txtFirst]").attr("value","starts with txtFirst");
+			});
+		$("#hypEndsWith").click(function(){		
+			$("[id$=Name]").attr("value","ends with name");
+			});
+		$("#hypNotEqual").click(function(){		
+			$("div#dvContent[name!=namebox]").css("background-color","yellow");
+			$("div#dvContent[name!=namebox]").css("color","cyan");
+			});
+		$("#hypChild").click(function(){		
+			$("ul.topnav li > ul").css("background-color","yellow");
+			$("div#dvtopNav > ul").css("color", "blue");
+			});
+		$("#hypDescedant").click(function(){		
+			$("form input").attr("value","text");
+			$("body div ul ").css("font-weight","bold");
+			});
+	});
+</script>	
+</html>

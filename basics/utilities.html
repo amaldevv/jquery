@@ -1,0 +1,171 @@
+<html>
+<head>
+	<title>My Sample Page</title>
+<!--step 1-->
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+</head>
+<body>
+	<div id="dvtopNav">
+		<ul class="topnav">
+			<li>Home</li>
+			<li>Contents
+				<ul>
+					<li>Chapter 1</li>
+					<li>Chapter 2</li>
+					<li>Chapter 3</li>
+				</ul>
+			</li>
+			<li>About</li>
+		</ul>
+	</div>
+	<form>
+	<div id="dvContent">
+		
+		<div>
+			<span class="label">First Name</span>
+		</div>
+		<div>
+			<input id="txtFirstName" name="namebox" type="text" />
+		</div>
+		<div>
+			<span>Last Name</span>
+		</div>
+		<div>
+			<input id="txtLastName" name="namebox" type="text" />
+		</div>
+		<div>
+			<span>&nbsp;</span>
+		</div>
+		<div>
+			<input id="btnSubmit" type="submit" />
+		</div>
+	</div>
+	<div id="dvCommands">
+		<a id="hypEach" href="#">Each</a>
+		<a id="hypInArray" href="#">In Array</a>
+		<a id="hypExtend" href="#">Extend</a>
+		<a id="hypIsArray" href="#">Is Array</a>
+		<a id="hypIsFunction" href="#">Is Function</a>
+		<a id="hypIsNumeric" href="#"> IS Numeric</a>
+		<a id="hypType" href="#">Type</a>
+		
+		<a id="hypContains" href="#">Contains</a>
+		
+		<a id="hypGrep" href="#">Grep</a>
+		
+		
+		<a id="hypDescedant" href="#">Descedant</a>
+		   
+	</div>
+	<div id="dvResult">
+		<span id="spnResult"> </span>
+	</div>
+	</form>
+</body>
+<style>
+	.label
+	{
+		font-style: italic;
+		font-family: sans-serif;
+		
+	}
+	.topnav{
+		border : 3px double red;
+
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#hypEach").click(function(){
+			$("ul.topNav li ul li").each(function(index){ $(this).text($(this).text() + " -> " + index)});		
+		});
+
+		$("#hypInArray").click(function(){
+			var arr = [];
+			arr.push("one");
+			arr.push("two");
+			arr.push("three");
+			arr.push("four");
+			arr.push("five");
+
+			$("#spnResult").html("Four found at position -> " + $.inArray("four",arr));
+		});
+
+		$("#hypIsArray").click(function(){
+			var arr = [];
+			arr.push("one");
+			arr.push("two");
+			arr.push("three");
+			arr.push("four");
+			arr.push("five");
+
+			$("#spnResult").html($.isArray(arr) );
+		});
+
+
+		$("#hypIsFunction").click(function(){
+			var defaults =function () { return "Function"; }
+
+			$("#spnResult").html($.isFunction(defaults) );
+		});
+
+		$("#hypIsNumeric").click(function(){
+			var num1 =23;
+
+			$("#spnResult").html($.isNumeric(num1) );
+
+			var num2 ="a";
+
+			$("#spnResult").html($("#spnResult").html() + "<br>" + $.isNumeric(num2) );
+		});
+
+		$("#hypType").click(function(){
+			$("#spnResult").html("");
+			$("#spnResult").append($.type(true));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type(1));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type("one"));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type(2.0));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type(2.568952));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type([]));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type(function(){}));
+			$("#spnResult").append("<br>");
+			$("#spnResult").append($.type(new Date()));
+		});
+
+		$("#hypContains").click(function(){
+			$("#spnResult").html("");
+			$("#spnResult").append($.contains(document.documentElement, document.body));
+		});
+
+		$("#hypGrep").click(function(){
+			var arr= $("ul.topNav li ul li")
+			var item = $.grep(arr,function(e){
+				return $(e).html()=="Chapter 2";
+			});
+			$("#spnResult").html("");
+			$("#spnResult").append(item);
+		});
+
+		$("#hypExtend").click(function(){
+			var defaults ={ Color: "Red"};
+			var options ={};
+
+			var obj = $.extend(defaults,options	);
+			$("#spnResult").html("-------------");
+			$("#spnResult").html($("#spnResult").html() + "<br>" + obj.Color + "<br>" + obj.BackgroundColor);
+			options = { Color:"Black", BackgroundColor: "Green"};
+			obj = $.extend(defaults,options	);
+			$("#spnResult").html($("#spnResult").html() + "<br>" + "-------------");
+			$("#spnResult").html($("#spnResult").html() + "<br>" + obj.Color + "<br>" + obj.BackgroundColor);
+			
+		});
+	});	
+</script>
+
+</html>
