@@ -1,1 +1,27 @@
-ajax.html
+<<html>
+<head>
+	<title>Ajax Example</title>
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+<body>
+	
+	<input type="submit" id="btnGetCustomerInfo" value ="Get Customer Info" />
+	<span id="resultXML"></span>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btnGetCustomerInfo").click(function(){
+			debugger;
+			$.ajax({
+				type:"GET",
+				crossDomain: true,
+				async: true,
+		 		url:"www.thomas-bayer.com/sqlrest/CUSTOMER/",
+		 		success:function(result){
+		 			debugger;
+    				$("#resultXML").html(result);
+  				}
+  			});
+		});
+	});
+</script>
+</html>
